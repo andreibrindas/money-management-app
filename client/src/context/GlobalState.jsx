@@ -4,6 +4,8 @@ import AppReducer from "./AppReducer";
 
 // Initial State
 const initialState = {
+  isUser: false,
+  user: null,
   transactions: [],
   error: null,
   loading: true,
@@ -74,6 +76,8 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        isUser: state.isUser,
+        user: state.user,
         transactions: state.transactions,
         error: state.error,
         loading: state.loading,
