@@ -20,6 +20,22 @@ export const GlobalProvider = ({ children }) => {
 
   // Actions that make calls to the reducer
 
+  // Actions for login
+
+  async function logInUser(userData) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/v1/users/login", userData, config);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async function getTransactions() {
     try {
       const res = await axios.get("/api/v1/transactions");
@@ -84,6 +100,7 @@ export const GlobalProvider = ({ children }) => {
         getTransactions,
         deleteTransaction,
         addTransaction,
+        logInUser,
       }}
     >
       {children}
